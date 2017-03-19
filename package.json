@@ -11,5 +11,9 @@
     "start": "node sheets-service.js"
   },
   "author": "vrkwork@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git://"
+	}
 }
