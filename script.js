@@ -8,6 +8,11 @@ const google = require('./lib/google-wrappers.js');
 
 const SHEETS_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 function askQuestion(prompt) {
   return new Promise((resolve, error) => {
     rl.question(prompt, (choice) => {
@@ -93,11 +98,6 @@ async function viewSpreadsheets() {
     console.log();
     return;
   }
-
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
 
   (async () => {
     let choice = 'e';
