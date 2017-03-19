@@ -1,5 +1,5 @@
 var readline = require('readline');
-var google = require('./google-wrappers.js');
+var google = require('./lib/google-wrappers.js');
 
 const SHEETS_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
 
