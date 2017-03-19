@@ -1,8 +1,8 @@
 # Google Sheets Service Account CLI (sheets-service)
-Create, view, share and delete Google Sheets owned by your Google Service Account through this command-line tool
+Create, view, share and delete Google Sheets owned by your [Google Service Account](https://cloud.google.com/iam/docs/understanding-service-accounts) through this command-line tool
 
 ## The Problem
-Google Sheets API is a little silly. It is designed so that it is easy to do the following:
+The [Google Sheets API](https://developers.google.com/sheets/api/reference/rest/) is a little silly. It is designed so that it is easy to do the following:
 - User goes to your website
 - User logs in with Google OAuth2
 - User updates  *a spreadsheet that the user owns*
