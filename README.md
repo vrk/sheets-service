@@ -1,4 +1,5 @@
-# Create/Share/Delete Google Sheets owned by a Google Service Account
+# sheets-service: Google Sheets Service Account CLI
+Create, view, share and delete Google Sheets owned by your Google Service Account through this command-line tool
 
 ## The Problem
 Google Sheets API is a little silly. It is designed so that it is easy to do the following:
@@ -28,4 +29,7 @@ Success, right?!
 
 **EXCEPT** there is no UI to create spreadsheets via your Google Service Account account, lol. You have to create them programmatically.
 
-And finally, that's what this command line script helps you to do!
+And finally, that's what this command line script helps you to do! Via **sheets-service**, you can create, view, share and delete Google Sheets owned by your Google Service Account.
+
+## Installation and Usage
+
