@@ -74,24 +74,45 @@ async function viewSpreadsheets() {
 ///////////////////////////////////////
 // Script main begins here.          //
 ///////////////////////////////////////
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+(() => {
 
-(async () => {
-  let choice = 'e';
-  do {
+  // First check to make sure that the user has put their private key
+  // in the correct file.
+  if (!google.verifyHasKey()) {
+    console.log('**ERROR**: /lib/privateSettings.json not found!!!');
     console.log();
-    console.log('What would you like to do?');
-    console.log('  (c)reate new spreadsheet');
-    console.log('  (v)iew existing spreadsheets');
-    console.log('  (s)hare spreadsheet with email');
-    console.log('  (d)elete a spreadsheet');
-    console.log('  (e)xit');
+    console.log('Before you can manage your spreadsheets through this CLI,');
+    console.log('you must store your private key json file in: ');
     console.log();
-    choice = await askQuestion('Enter your choice here: ');
-    await processChoice(choice);
-  } while (choice != 'e');
-  rl.close();
+    console.log('  ./lib/privateSettings.json');
+    console.log();
+    console.log('For more information on how to create this, check out the');
+    console.log('repo README page:');
+    console.log();
+    console.log('https://github.com/vrk/sheets-service-account-cli');
+    console.log();
+    return;
+  }
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  (async () => {
+    let choice = 'e';
+    do {
+      console.log();
+      console.log('What would you like to do?');
+      console.log('  (c)reate new spreadsheet');
+      console.log('  (v)iew existing spreadsheets');
+      console.log('  (s)hare spreadsheet with email');
+      console.log('  (d)elete a spreadsheet');
+      console.log('  (e)xit');
+      console.log();
+      choice = await askQuestion('Enter your choice here: ');
+      await processChoice(choice);
+    } while (choice != 'e');
+    rl.close();
+  })();
 })();
