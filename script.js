@@ -1,6 +1,6 @@
 var readline = require('readline');
 var googleapis = require('googleapis');
-var googleSheets = require('./google-auth.js');
+var googleSheets = require('./google-wrappers.js');
 
 const SHEETS_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
 
