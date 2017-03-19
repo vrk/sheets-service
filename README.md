@@ -7,7 +7,7 @@ There is no UI to create spreadsheets (or any Drive documents) via your [Google 
 ## The Solution
 **sheets-service** is a command-line script that lets you create, view, share and delete Google Sheets owned by your Google Service Account.
 
-## Background: Why would I ever want this?
+## Why would I ever want this?
 The [Google Sheets API](https://developers.google.com/sheets/api/reference/rest/) is a little silly. It is designed so that it is easy to do the following:
 - User goes to your website
 - User logs into your website using Google OAuth2
