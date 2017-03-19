@@ -67,4 +67,4 @@ node sheets-service.js
 From there, the tool should be pretty self-explanitory.
 
 ## Questions, bugs, etc?
-File an issue in the repository.
+[File an issue](https://github.com/vrk/sheets-service/issues) in the tracker. 
