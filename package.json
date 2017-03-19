@@ -1,5 +1,5 @@
 {
-  "name": "sheets-service-account-cli",
+  "name": "sheets-service",
   "version": "1.0.0",
   "description": "Manage the Google Sheets saved in your Service Account via this command-line script",
   "dependencies": {
@@ -8,7 +8,7 @@
     "readline": "^1.3.0"
   },
   "scripts": {
-    "start": "node script.js"
+    "start": "node sheet-service.js"
   },
   "author": "vrkwork@gmail.com",
   "license": "ISC"
