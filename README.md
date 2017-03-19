@@ -9,7 +9,7 @@ The [Google Sheets API](https://developers.google.com/sheets/api/reference/rest/
 
 But it's pretty unusual that you'd want this behavior.
 
-More likely is the case where you want to create a NodeJS backend whose data saves to one single Google Sheets spreadsheet that *you* own, such as a sign-up form. In other words, you'd want something like this:
+If you want your backend to interact with a spreadsheet, it's far your likely that you'd want your data to save to one single Google Sheets spreadsheet that *you* own, such as a sign-up form. In other words, you'd want something like this:
 - User goes to your website
 - User fills out form and submits it
 - *Your* spreadsheet is populated with their submitted information
