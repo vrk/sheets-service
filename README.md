@@ -1,7 +1,12 @@
 # Google Sheets Service Account CLI (sheets-service)
 Create, view, share and delete Google Sheets owned by your [Google Service Account](https://cloud.google.com/iam/docs/understanding-service-accounts) through this command-line tool
 
-## The Problem
+# The Problem
+There is no UI to create spreadsheets (or any Drive documents) via your [Google Service Account](https://cloud.google.com/iam/docs/understanding-service-accounts) account. If you want to do this, you have to create them programmatically. In other words, you have to write a script... *or*... You can also you the **sheets-service** tool in this repo!
+
+## The Solution**sheets-service** is a command-line script that lets you create, view, share and delete Google Sheets owned by your Google Service Account.
+
+## Background: Why would I ever want this?
 The [Google Sheets API](https://developers.google.com/sheets/api/reference/rest/) is a little silly. It is designed so that it is easy to do the following:
 - User goes to your website
 - User logs into your website using Google OAuth2
@@ -25,9 +30,7 @@ To elaborate on **Option 2**,
 
 Success, right?!
 
-**EXCEPT** there is no UI to create spreadsheets via your Google Service Account account, lol. You have to create them programmatically.
-
-And finally, that's what this command line script helps you to do! Via **sheets-service**, you can create, view, share and delete Google Sheets owned by your Google Service Account.
+**EXCEPT:** See original problem statement. There's no UI for creating spreadsheets using your GSA account... that is, until now! Use the **sheets-service** script for a command-line interface to your GSA account's spreadsheets.
 
 ## Installation
 
