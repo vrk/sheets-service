@@ -9,9 +9,7 @@ Google Sheets API is a little silly. It is designed so that it is easy to do the
 
 But it's pretty unusual that you'd want this behavior.
 
-More likely is the case where you want to create a NodeJS backend whose data saves to one single Google Sheets spreadsheet, such as a sign-up form.
-
-So the user flow would be like this:
+More likely is the case where you want to create a NodeJS backend whose data saves to one single Google Sheets spreadsheet, such as a sign-up form, i.e. something like this:
 - User goes to your website
 - User fills out form and submits it
 - *Your* spreadsheet is populated with their submitted information
@@ -31,5 +29,42 @@ Success, right?!
 
 And finally, that's what this command line script helps you to do! Via **sheets-service**, you can create, view, share and delete Google Sheets owned by your Google Service Account.
 
-## Installation and Usage
+## Installation
 
+1. Clone this repository
+```
+git clone https://github.com/vrk/sheets-service.git
+```
+
+2. Install dependencies
+```
+npm install
+```
+
+3. Create a Google Service Account
+You can skip this if you have one already. Otherwise, go to the [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts/serviceaccounts-zero) section of the Google Developer Console and follow the wizard to create your new Google Service Account. You may need to create a new project to associate with this account.
+
+4. Download your private key JSON file
+You should see your new Google Service Account in the [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts/serviceaccounts-zero) menu for your project. Under "Options" on the right side of the table, click the 3-dot menu for your GSA account, and click "Create key". Create your private key in JSON format.
+
+5. Move your private key to `./lib/privateSettings.json`
+The **sheets-service** script will look for your private key JSON file in `./lib/privateSettings.json`, so move your private key .json file to the `lib/` directory of your cloned repo, and rename it to `privateSettings.json`
+
+Now you should be ready to use the script!
+
+## Usage
+Once you have finished installation, you can run the script via:
+```
+npm start
+```
+
+or
+
+```
+node sheets-service.js
+```
+
+From there, the tool should be pretty self-explanitory.
+
+## Questions, bugs, etc?
+File an issue in the repository.
