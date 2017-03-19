@@ -1,96 +1,9 @@
 var readline = require('readline');
-var googleapis = require('googleapis');
-var googleSheets = require('./google-wrappers.js');
+var google = require('./google-wrappers.js');
 
 const SHEETS_URL_PREFIX = 'https://docs.google.com/spreadsheets/d/';
 
-function getFiles() {
-  return new Promise((resolve) => {
-    googleSheets.authenticate().then((auth) => {
-      var service = googleapis.drive('v3');
-			service.files.list({
-        q: "mimeType='application/vnd.google-apps.spreadsheet'",
-        auth: auth,
-        pageSize: 1000,
-        fields: "files(id, name)"
-			}, function(err, response) {
-				if (err) {
-					console.log('The API returned an error: ' + err);
-					resolve(err);
-          return;
-				}
-				resolve(response.files);
-      });
-    });
-  });
-}
 
-function deleteFile(fileId) {
-  return new Promise((resolve) => {
-    googleSheets.authenticate().then((auth) => {
-      var service = googleapis.drive('v3');
-			service.files.delete({
-				auth: auth,
-        fileId: fileId
-			}, function(err, response) {
-				if (err) {
-					console.log('The API returned an error: ' + err);
-					resolve(error);
-          return;
-				}
-				resolve(response);
-      });
-    });
-  });
-}
-
-function addPermission(fileId, emailAddress) {
-  return new Promise((resolve) => {
-    googleSheets.authenticate().then((auth) => {
-      var service = googleapis.drive('v3');
-      var userPermission = {
-          'type': 'user',
-          'role': 'writer',
-          'emailAddress': emailAddress
-      };
-			service.permissions.create({
-				auth: auth,
-        resource: userPermission,
-        fileId: fileId
-			}, function(err, response) {
-				if (err) {
-					console.log('The API returned an error: ' + err);
-					resolve(error);
-          return;
-				}
-				resolve(response);
-      });
-    });
-  });
-}
-
-
-function create(title) {
-  return new Promise((resolve) => {
-    googleSheets.authenticate().then((oauth2Client) => {
-      var sheets = googleapis.sheets('v4');
-      sheets.spreadsheets.create({
-        auth: oauth2Client,
-        resource: {
-          properties: {
-            title: title
-          }
-        }
-      }, function(err, response) {
-        if (err) {
-          console.log('The API returned an error: ' + err);
-          resolve({error: err});
-        }
-        resolve({response: response});
-      });
-    });
-  });
-}
 
 var rl = readline.createInterface({
   input: process.stdin,
@@ -137,7 +50,7 @@ function shareSpreadsheet(rl, fileId, onComplete) {
     if (!choice) {
       onComplete();
     } else {
-      addPermission(fileId, choice).then(() => {
+      google.addPermission(fileId, choice).then(() => {
         console.log('Spreadsheet shared: ' + SHEETS_URL_PREFIX + fileId);
         onComplete();
       });
@@ -148,7 +61,7 @@ function shareSpreadsheet(rl, fileId, onComplete) {
 function createSpreadsheet(rl, onComplete) {
   rl.question('Title of spreadsheet: ', (choice) => {
     var title = choice;
-    create(title).then((raw) => {
+    google.create(title).then((raw) => {
       shareSpreadsheet(rl, raw.response.spreadsheetId, onComplete);
     });
   });
@@ -170,12 +83,12 @@ function onDeleteMenu(rl, onComplete) {
       onComplete();
       return;
     }
-    deleteFile(choice).then(onComplete);
+    google.deleteFile(choice).then(onComplete);
   });
 }
 
 function viewSpreadsheets(onComplete) {
-  getFiles().then((files) => {
+  google.getSpreadsheets().then((files) => {
     for (var file of files) {
       console.log('File:', file.id, file.name);
     }
