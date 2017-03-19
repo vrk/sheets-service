@@ -1,4 +1,4 @@
-# sheets-service: Google Sheets Service Account CLI
+# Google Sheets Service Account CLI (sheets-service)
 Create, view, share and delete Google Sheets owned by your Google Service Account through this command-line tool
 
 ## The Problem
