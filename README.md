@@ -4,12 +4,12 @@ Create, view, share and delete Google Sheets owned by your [Google Service Accou
 ## The Problem
 The [Google Sheets API](https://developers.google.com/sheets/api/reference/rest/) is a little silly. It is designed so that it is easy to do the following:
 - User goes to your website
-- User logs in with Google OAuth2
-- User updates  *a spreadsheet that the user owns*
+- User logs into your website using Google OAuth2
+- User is now authenticated to update  a spreadsheet that the *user* owns
 
 But it's pretty unusual that you'd want this behavior.
 
-More likely is the case where you want to create a NodeJS backend whose data saves to one single Google Sheets spreadsheet, such as a sign-up form, i.e. something like this:
+More likely is the case where you want to create a NodeJS backend whose data saves to one single Google Sheets spreadsheet that *you* own, such as a sign-up form. In other words, you'd want something like this:
 - User goes to your website
 - User fills out form and submits it
 - *Your* spreadsheet is populated with their submitted information
