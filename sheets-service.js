@@ -16,7 +16,7 @@ const rl = readline.createInterface({
 function askQuestion(prompt) {
   return new Promise((resolve, error) => {
     rl.question(prompt, (choice) => {
-      resolve(choice);
+      resolve(choice.trim());
     });
   });
 }
@@ -40,10 +40,12 @@ async function processChoice(choice) {
 }
 
 async function shareSpreadsheet(fileId) {
-  const choice = await askQuestion('Share with: (@gmail): ');
+  const choice = await askQuestion('Enter your email: (@gmail or @stanford): ');
   if (choice) {
-    await google.addPermission(fileId, choice);
+    const response = await google.addPermission(fileId, choice);
+    return response.error === undefined;
   }
+  return false;
 }
 
 async function createSpreadsheet() {
@@ -51,21 +53,26 @@ async function createSpreadsheet() {
   const raw = await google.create(choice);
   const fileId = raw.response.spreadsheetId;
   await shareSpreadsheet(fileId);
-  console.log('Spreadsheet created: ' + SHEETS_URL_PREFIX + fileId);
+  console.log(`Spreadsheet created: ${SHEETS_URL_PREFIX}${fileId}`);
 }
 
 async function onShareMenu() {
   const choice = await askQuestion('Spreadsheet id: ');
   if (choice) {
-    await shareSpreadsheet(choice);
-    console.log('Spreadsheet shared: ' + SHEETS_URL_PREFIX + choice);
+    const shared = await shareSpreadsheet(choice);
+    if (shared) {
+      console.log(`Spreadsheet shared: ${SHEETS_URL_PREFIX}${choice}`);
+    }
   }
 }
 
 async function onDeleteMenu() {
   const choice = await askQuestion('Spreadsheet id: ');
   if (choice) {
-    await google.deleteFile(choice);
+    const response = await google.deleteFile(choice);
+    if (response.error === undefined) {
+      console.log(`Spreadsheet deleted: ${choice}`);
+    }
   }
 }
 
