@@ -2,7 +2,7 @@
 Create, view, share and delete Google Sheets owned by your [Google Service Account](https://cloud.google.com/iam/docs/understanding-service-accounts) through this command-line tool
 
 ## The Problem
-There is no UI to create spreadsheets (or any Drive documents) via your [Google Service Account](https://cloud.google.com/iam/docs/understanding-service-accounts) account. If you want to do this, you have to create them programmatically. In other words, you have to write a script... *or*... You can also you the **sheets-service** tool in this repo!
+There is no UI to create spreadsheets (or any Drive documents) via your [Google Service Account](https://cloud.google.com/iam/docs/understanding-service-accounts) account. If you want to do this, you have to create them programmatically. In other words, you have to write a script... *or*... You can use **sheets-service**, i.e. the tool in this repo!
 
 ## The Solution
 **sheets-service** is a command-line script that lets you create, view, share and delete Google Sheets owned by your Google Service Account.
@@ -15,7 +15,7 @@ The [Google Sheets API](https://developers.google.com/sheets/api/reference/rest/
 
 But it's pretty unusual that you'd want this behavior.
 
-If you want your backend to interact with a spreadsheet, it's far your likely that you'd want your data to save to one single Google Sheets spreadsheet that *you* own, such as a sign-up form. In other words, you'd want something like this:
+If you want your backend to interact with a spreadsheet, it's far more likely that you'd want your data to save to one single Google Sheets spreadsheet that *you* own, such as a sign-up form. In other words, you'd want something like this:
 - User goes to your website
 - User fills out form and submits it
 - *Your* spreadsheet is populated with their submitted information
